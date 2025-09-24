@@ -1,0 +1,182 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light " style="width: 100%;">
+  <div class="card shadow p-4" style="width: 400px;">
+    <h3 class="text-center mb-4">Contact Us</h3>
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+
+      <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" formControlName="name" class="form-control"
+          [ngClass]="{'is-invalid': f['name'].invalid && (f['name'].touched || submitted)}">
+        <div class="invalid-feedback" *ngIf="f['name'].errors">
+          <small *ngIf="f['name'].errors['required']">Name is required</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" formControlName="email" class="form-control"
+          [ngClass]="{'is-invalid': f['email'].invalid && (f['email'].touched || submitted)}">
+        <div class="invalid-feedback" *ngIf="f['email'].errors">
+          <small *ngIf="f['email'].errors['required']">Email is required</small>
+          <small *ngIf="f['email'].errors['email']">Enter a valid email</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+        <textarea formControlName="message" class="form-control"
+          [ngClass]="{'is-invalid': f['message'].invalid && (f['message'].touched || submitted)}"></textarea>
+        <div class="invalid-feedback" *ngIf="f['message'].errors">
+          <small *ngIf="f['message'].errors['required']">Message is required</small>
+          <small *ngIf="f['message'].errors['minlength']">Message must be at least 10 characters</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
+
+    <div *ngIf="submitted && contactForm.valid" class="mt-4 text-center">
+      <h3>Details</h3>
+      <p><strong>Name:</strong> {{ contactForm.value.name }}</p>
+      <p><strong>Email:</strong> {{ contactForm.value.email }}</p>
+      <p><strong>Message:</strong> {{ contactForm.value.message }}</p>
+    </div>
+  </div>
+</div>
+
+<!--<h3>Contact Us</h3>
+<form (ngSubmit)="submitForm()" #contactForm="ngForm" class="mt-3">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" [(ngModel)]="contact.name" required class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" [(ngModel)]="contact.email" required class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea name="message" [(ngModel)]="contact.message" required class="form-control"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Show the Details</h3>
+<div *ngIf="submitted">
+  <p><strong>Name:</strong> {{ contact.name }}</p>
+  <p><strong>Email:</strong> {{ contact.email }}</p>
+  <p><strong>Message:</strong> {{ contact.message }}</p>
+</div>
+-->
+<!--This error only in input box-->
+
+<!--<h3>Contact Us</h3>
+<form (ngSubmit)="submitForm()" #contactForm="ngForm" class="mt-3">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" [(ngModel)]="contact.name" required #nameerror="ngModel" class="form-control"  [ngClass]="{'is-invalid': nameerror.invalid && (nameerror.dirty || nameerror.touched)}">
+
+    <div class="invalid-feedback" *ngIf="nameerror.errors && (nameerror.dirty || nameerror.touched)">
+        <small *ngIf="nameerror.errors['required']">Name is required</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" [(ngModel)]="contact.email" required email #emailerror="ngModel" class="form-control"  [ngClass]="{'is-invalid': emailerror.invalid && (emailerror.dirty || emailerror.touched)}">
+    <div class="invalid-feedback" *ngIf="emailerror.errors && (emailerror.dirty || emailerror.touched)">
+        <small *ngIf="emailerror.errors['required']">Email is required</small>
+          <small *ngIf="emailerror.errors['email']">Enter a valid email</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea name="message" [(ngModel)]="contact.message" required #messageerror="ngModel" minlength="10" class="form-control"  [ngClass]="{'is-invalid': messageerror.invalid && (messageerror.dirty || messageerror.touched)}"></textarea>
+        <div class="invalid-feedback" *ngIf="messageerror.errors && (messageerror.dirty || messageerror.touched)">
+        <small *ngIf="messageerror.errors['required']">Message is required</small>
+          <small *ngIf="messageerror.errors['minlength']">Message must beat least 10 character long</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Show the Details</h3>
+<div *ngIf="submitted">
+  <p><strong>Name:</strong> {{ contact.name }}</p>
+  <p><strong>Email:</strong> {{ contact.email }}</p>
+  <p><strong>Message:</strong> {{ contact.message }}</p>
+</div>-->
+<!--This show error in input box -->
+<!--<h3>Contact Us</h3>
+<form (ngSubmit)="submitForm()" #contactForm="ngForm" class="mt-3">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" [(ngModel)]="contact.name" required class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" [(ngModel)]="contact.email" required class="form-control">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea name="message" [(ngModel)]="contact.message" required class="form-control"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Show the Details</h3>
+<div *ngIf="submitted">
+  <p><strong>Name:</strong> {{ contact.name }}</p>
+  <p><strong>Email:</strong> {{ contact.email }}</p>
+  <p><strong>Message:</strong> {{ contact.message }}</p>
+</div>
+-->
+
+<!--When we click submit button it shows all error-->
+<!--Added || submitted in *ngIf and ngClass so validation errors appear after clicking Submit.submitForm(contactForm) passes the form reference to the TS file.-->
+<!--<h3>Contact Us</h3>
+<form (ngSubmit)="submitForm(contactForm)" #contactForm="ngForm" class="mt-3">
+  <div class="mb-3">
+    <label class="form-label">Name</label>
+    <input type="text" name="name" [(ngModel)]="contact.name" required #nameerror="ngModel" class="form-control"  [ngClass]="{'is-invalid': nameerror.invalid && (nameerror.dirty || nameerror.touched || submitted)}">
+
+    <div class="invalid-feedback" *ngIf="nameerror.errors && (nameerror.dirty || nameerror.touched || submitted)">
+        <small *ngIf="nameerror.errors['required']">Name is required</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" name="email" [(ngModel)]="contact.email" required email #emailerror="ngModel" class="form-control"  [ngClass]="{'is-invalid': emailerror.invalid && (emailerror.dirty || emailerror.touched || submitted)}">
+    <div class="invalid-feedback" *ngIf="emailerror.errors && (emailerror.dirty || emailerror.touched || submitted)">
+        <small *ngIf="emailerror.errors['required']">Email is required</small>
+          <small *ngIf="emailerror.errors['email']">Enter a valid email</small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Message</label>
+    <textarea name="message" [(ngModel)]="contact.message" required #messageerror="ngModel" minlength="10" class="form-control"  [ngClass]="{'is-invalid': messageerror.invalid && (messageerror.dirty || messageerror.touched || submitted)}"></textarea>
+        <div class="invalid-feedback" *ngIf="messageerror.errors && (messageerror.dirty || messageerror.touched || submitted)">
+        <small *ngIf="messageerror.errors['required']">Message is required</small>
+          <small *ngIf="messageerror.errors['minlength']">Message must beat least 10 character long</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h3>Show the Details</h3>
+<div *ngIf="submitted">
+  <p><strong>Name:</strong> {{ contact.name }}</p>
+  <p><strong>Email:</strong> {{ contact.email }}</p>
+  <p><strong>Message:</strong> {{ contact.message }}</p>
+</div>-->

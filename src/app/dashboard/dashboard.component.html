@@ -1,0 +1,19 @@
+<div class="d-flex">
+    <!--SIDEBAR VIEW -->
+    <nav class="bg-dark text-white vh-100 p-3" style="width: 250px;">
+        <h4 class="mb-4">DASHBOARD</h4>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a class="nav-link text-white" routerLink="student-details" routerLinkActive="active">Student Details</a>
+            </li>
+             <li class="nav-item mb-2">
+                <a class="nav-link text-white" routerLink="about-us" routerLinkActive="active">About Us</a>
+            </li>
+             <li class="nav-item mb-2">
+                <a class="nav-link text-white" routerLink="contact-us" routerLinkActive="active">Contact Us</a>
+            </li>
+        </ul>
+        <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+    </nav>
+    <router-outlet></router-outlet>
+</div>

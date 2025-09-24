@@ -1,0 +1,23 @@
+<h4>STUDENT DETAILS</h4>
+
+<div class=" justify-content-center">
+<table class="table table-bordered table-striped mt-3 " style="width: 50%;">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+        </tr>
+         </thead>
+        <tbody>
+            <tr *ngFor="let s of students">
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.email}}</td>
+                <td>{{s.age}}</td>
+
+            </tr>
+        </tbody>
+</table>  
+</div>
